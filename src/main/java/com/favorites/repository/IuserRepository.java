@@ -37,13 +37,13 @@ public interface IuserRepository extends JpaRepository<User, Long> {
     @Modifying(clearAutomatically=true)
     @Transactional
     @Query("update User set passWord=:passWord where email=:email")
-    int setUserPassWord(@Param("passWord") String psssWord, @Param("email") String email);
+    int setNewPassword(@Param("passWord") String passWord, @Param("email") String email);
 
     /*设置个人简介*/
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query("update User set introduction=:introduction where email=:email")
-    int setUserIntroduction(@Param("passWord") String introduction, @Param("email") String email);
+    int setUserIntroduction(@Param("introduction") String introduction, @Param("email") String email);
 
     /*设置用户头像*/
     @Modifying(clearAutomatically=true)

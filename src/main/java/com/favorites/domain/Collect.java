@@ -24,18 +24,18 @@ public class Collect  implements Serializable {
 	//收藏url的id
 	@Column(nullable = false)
 	private Long favoritesId;
-	//收藏的url
+/*	//收藏的url
 	@Column(nullable = false, columnDefinition = "varchar(600)")
 	private String url;
 	//收藏url的主题
 	@Column(nullable = false)
 	private String title;
-	//对url的描述
-	@Column(nullable = true, length = 65535, columnDefinition = "Text")
-	private String description;
 	//url的logo
 	@Column(nullable = true,columnDefinition = "varchar(300)")
-	private String logoUrl;
+	private String logoUrl;*/
+	//对url的备注
+	@Column(nullable = true, length = 65535, columnDefinition = "Text")
+	private String description;
 	//编码方式
 	@Column(nullable = true)
 	private String charset;
@@ -92,7 +92,7 @@ public class Collect  implements Serializable {
 		this.favoritesId = favoritesId;
 	}
 
-	public String getUrl() {
+	/*public String getUrl() {
 		return url;
 	}
 
@@ -123,7 +123,7 @@ public class Collect  implements Serializable {
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
+*/
 	public String getCharset() {
 		return charset;
 	}

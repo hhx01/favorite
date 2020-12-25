@@ -7,11 +7,14 @@ import com.favorites.domain.result.Response;
 import com.favorites.service.IUserService;
 import com.favorites.repository.IuserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class UserService implements IUserService {
+@Service("userService")
+public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IuserRepository userRepository;
+    //创建新用户
     @Override
     public String create(User user) {
         {
@@ -40,5 +43,40 @@ public class UserService implements IUserService {
             }
             return "";
         }
+    }
+
+    //登录
+    @Override
+    public String login(String id, String password) {
+        return null;
+    }
+
+    //更新个人简介
+    @Override
+    public String updateIntroduction(String introduction) {
+        return null;
+    }
+    //更新头像
+    @Override
+    public String updateHead(String dataUrl) {
+        return null;
+    }
+
+    //更新昵称
+    @Override
+    public String updateNickName(String newNickName) {
+        return null;
+    }
+
+    //修改密码
+    @Override
+    public String updatePwd(String oldPwd, String newPwd) {
+        return null;
+    }
+
+    //忘记密码
+    @Override
+    public String resetPwd(String email, String userID, String newPwd) {
+        return null;
     }
 }

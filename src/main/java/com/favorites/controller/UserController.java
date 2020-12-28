@@ -9,4 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
    // @RequestMapping(value = "/regist", method = RequestMethod.POST)
     //public
+    @RequestMapping("/login")
+    public String login(){
+        return "hello";
+    }
 }

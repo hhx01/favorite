@@ -1,6 +1,5 @@
 package com.favorites.controller;
 
-import com.favorites.domain.result.Response;
 import com.favorites.domain.view.CollectSummary;
 import com.favorites.service.ILookRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

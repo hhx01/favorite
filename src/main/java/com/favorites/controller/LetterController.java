@@ -21,17 +21,16 @@ public class LetterController {
     private ILetterService letterService;
 
     @RequestMapping("/sentLetter")
-    public int sentLetter(Letter letter, Long baseUserId){
-        try {
-            letter.setSendUserId(baseUserId);
-            letterService.sentLetter(letter);
-        }catch (Exception e){
-            return 0;
-        }
-        return 1;
+    public void sentLetter(Long reciveUserId,Long baseUserId , String content ){
+        Letter letter = null;
+        letter.setContent(content);
+        letter.setCreateTime(System.currentTimeMillis());
+        letter.setReceiveUserId(reciveUserId);
+        letter.setSendUserId(baseUserId);
+        letterService.sentLetter(letter);
     }
 
-    @RequestMapping("findLetterList")
+    @RequestMapping("/findLetterList")
     public List<LetterSummary> findLetterList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                               @RequestParam(value = "size", defaultValue = "15") Integer size,Long baseUserId){
         Sort sort = new Sort(Sort.Direction.DESC, "id");

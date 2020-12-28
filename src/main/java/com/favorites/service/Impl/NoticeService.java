@@ -5,8 +5,11 @@ import com.favorites.domain.User;
 import com.favorites.domain.view.CollectSummary;
 import com.favorites.domain.view.CollectView;
 import com.favorites.domain.view.CommenView;
+import com.favorites.repository.ICommentRepository;
 import com.favorites.repository.INoticeRepository;
 import com.favorites.repository.IPraiseRepository;
+import com.favorites.repository.IuserRepository;
+import com.favorites.service.INoticeService;
 import com.favorites.utils.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("noticeService")
-public class NoticeService {
+public class NoticeService implements INoticeService {
 
     @Autowired
     private INoticeRepository noticeRepository;
@@ -27,8 +30,12 @@ public class NoticeService {
     private IPraiseRepository praiseRepository;
 
     @Autowired
-    private
+    private ICommentRepository commentRepository;
 
+    @Autowired
+    private IuserRepository iuserRepository;
+
+    @Override
     public void saveNotice(String collectId,String type,Long userId,String operId){
         Notice notice = new Notice();
         if(StringUtils.isNotBlank(collectId)){
@@ -66,7 +73,7 @@ public class NoticeService {
                 summary.setUserName(comment.getUserName());
                 summary.setProfilePicture(comment.getProfilePicture());
                 if(comment.getReplyUserId() != null && comment.getReplyUserId() != 0){
-                    User replyUser = userRepository.findById(comment.getReplyUserId().longValue());
+                    User replyUser = iuserRepository.findById(comment.getReplyUserId().longValue());
                     summary.setRemark("回复@"+replyUser.getUserName()+": "+comment.getContent());
                 }else{
                     summary.setRemark(comment.getContent());

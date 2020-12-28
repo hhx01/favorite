@@ -2,6 +2,7 @@ package com.favorites.controller;
 
 import com.favorites.service.IFollowService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,22 +34,22 @@ public class FollowController {
     }
 
     @RequestMapping(value = "/myfollowid")
-    public List<Long> myfollowid(Long baseUserId){
-        return followService.myFollow(baseUserId);      //返回我关注的所有followid
+    public void myfollowid(Model model,Long baseUserId){
+        model.addAttribute("myfollowid",followService.myFollow(baseUserId));//返回我关注的所有followid
     }
 
     @RequestMapping(value = "/followme")
-    public List<String> followme(Long baseUserId){
-        return followService.followMe(baseUserId);      //返回关注我的用户名列表
+    public void followme(Model model,Long baseUserId){
+        model.addAttribute("followme",followService.followMe(baseUserId));//返回关注我的用户名列表
     }
 
     @RequestMapping(value = "/myfollowuser")
-    public List<String> myfollowuser(Long followId){
-        return followService.findUserByfollowId(followId);      //返回关注的用户详细信息
+    public void myfollowuser(Model model,Long followId){
+        model.addAttribute("myfollowusesr",followService.findUserByfollowId(followId));//返回关注的用户详细信息
     }
 
     @RequestMapping(value = "/myfollowusername")
-    public List<String> myfollowusername(Long baseUserId){
-        return followService.findUsernameBybaseUserId(baseUserId);   //返回我关注的所有用户名
+    public void myfollowusername(Model model,Long baseUserId){
+        model.addAttribute("myfollowusername",followService.findUsernameBybaseUserId(baseUserId));//返回我关注的所有用户名
     }
 }

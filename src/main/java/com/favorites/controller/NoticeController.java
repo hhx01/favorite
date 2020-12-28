@@ -12,5 +12,10 @@ public class NoticeController {
     @Autowired
     private INoticeService noticeService;
 
-    @RequestMapping(value = "reply")
+    @RequestMapping(value = "/savenotice")
+    public void saveNotice(String collectId,String type,Long userId,String operId){
+        noticeService.saveNotice(collectId,type,userId,operId);
+    }
+
+
 }

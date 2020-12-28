@@ -26,6 +26,9 @@ public class FollowService implements IFollowService {
             follow.setLastModifyTime(System.currentTimeMillis());
             followRepository.save(follow);
         }
+        else if( null != follow && follow.getStatus() == FollowStatus.UNFOLLOW){
+            followRepository.updateStatusById(FollowStatus.FOLLOW, System.currentTimeMillis(), follow.getId());
+        }
     }
 
     @Override

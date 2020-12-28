@@ -2,12 +2,11 @@ package com.favorites.service.Impl;
 
 import com.favorites.domain.Praise;
 import com.favorites.repository.IPraiseRepository;
-import com.favorites.service.IFollowService;
 import com.favorites.service.IPraiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("praiseService")
 public class PraiseService implements IPraiseService {
 
     @Autowired

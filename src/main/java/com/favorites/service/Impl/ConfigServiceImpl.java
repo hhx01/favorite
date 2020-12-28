@@ -8,7 +8,7 @@ import com.favorites.service.IConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("configService")
 public class ConfigServiceImpl implements IConfigService{
 
     @Autowired

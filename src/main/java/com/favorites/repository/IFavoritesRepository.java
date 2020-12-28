@@ -19,13 +19,13 @@ public interface IFavoritesRepository extends JpaRepository<Favorites, Long> {
     /*更新修改时间*/
     @Modifying(clearAutomatically=true)
     @Transactional
-    @Query("update Favorites set lastModifyTime=:time where id=:id")
-    int setLastModifyTime(@Param("lastModifyTime") Long time,@Param("id") long id);
+    @Query("update Favorites set lastModifyTime=?1 where id=?2")
+    int setLastModifyTime(Long time,long id);
     /*更新收藏夹名称*/
     @Modifying(clearAutomatically=true)
     @Transactional
-    @Query("update Favorites set name=:name where id=:id")
-    int setName(@Param("lastModifyTime")String name,@Param("id") long id);
+    @Query("update Favorites set name=?1 where id=?2")
+    int setName(String name, long id);
     /*删除收藏夹*/
     void deleteByid(long id);
 }

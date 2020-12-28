@@ -30,12 +30,12 @@ public class UserController {
     @Autowired
     private IFavoritesSevice favoritesSevice;
 
-    @Value("${static.url}")
+    /*@Value("${static.url}")
     private String staticUrl;
     @Value("${file.profilepictures.url}")
     private String fileProfilepicturesUrl;
     @Value("${file.backgroundpictures.url}")
-    private String fileBackgroundpicturesUrl;
+    private String fileBackgroundpicturesUrl;*/
 
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     public String regist(@RequestBody(required = false) User user){
@@ -49,7 +49,7 @@ public class UserController {
         return result;
     }
 
-    //修改背景
+    /*//修改背景
     @RequestMapping(value = "/uploadImg",method = RequestMethod.POST)
     public String uploadImg(String dataUrl,String email){
 
@@ -75,7 +75,7 @@ public class UserController {
             return "修改失败";
         }
 
-    }
+    }*/
 
     @RequestMapping("/all")
     public List<User> findAll(){
@@ -98,5 +98,4 @@ public class UserController {
         model.addAttribute("userFavorites",userFavorites);
         return "获取用户首页信息";
     }
-
 }

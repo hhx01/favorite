@@ -1,6 +1,10 @@
 package com.favorites.service.Impl;
 
+import com.favorites.domain.Config;
+import com.favorites.domain.Favorites;
 import com.favorites.domain.User;
+import com.favorites.service.IConfigService;
+import com.favorites.service.IFavoritesSevice;
 import com.favorites.service.IUserService;
 import com.favorites.repository.IuserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 
 @Service("userService")
@@ -20,6 +25,12 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IuserRepository userRepository;
+
+    @Autowired
+    private IFavoritesSevice favoritesSevice;
+
+    @Autowired
+    private IConfigService configService;
     //创建新用户
     @Override
     public String create(User user) {
@@ -39,9 +50,14 @@ public class UserServiceImpl implements IUserService {
                 user.setProfilePicture("img/favicon.png");
                 userRepository.save(user);
                 // 添加默认收藏夹
-                //Favorites favorites = favoritesService.saveFavorites(user.getId(), "未读列表");
+                Favorites myfavorites = new Favorites();
+                myfavorites.setName("云收藏");
+                myfavorites.setUserId(user.getId());
+                favoritesSevice.createFavorites(myfavorites);
                 // 添加默认属性设置
-                //configService.saveConfig(user.getId(),String.valueOf(favorites.getId()));
+                Config config = new Config();
+                config.setUserId(user.getId());
+                configService.saveConfig(config);
             } catch (Exception e) {
                 return "fail";
             }

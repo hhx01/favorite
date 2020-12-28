@@ -13,5 +13,5 @@ public interface INoticeService {
 
     public void saveNotice(String collectId,String type,Long userId,String operId);
 
-
+    public List<CollectSummary> getNoticeCollects(String type, Long userId, Pageable pageable);
 }

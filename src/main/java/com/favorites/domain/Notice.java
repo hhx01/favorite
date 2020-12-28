@@ -24,9 +24,9 @@ public class Notice extends Entitys implements Serializable {
 	@Column(nullable = true)
 	private String collectId;
 	//通知类型（@，评论，赞，私信）
-	@Enumerated(EnumType.STRING)
+
 	@Column(nullable = false)
-	private NoticeType type;
+	private String type;
 	//
 	@Column(nullable = true)
 	private String operId;
@@ -65,11 +65,11 @@ public class Notice extends Entitys implements Serializable {
 		this.collectId = collectId;
 	}
 
-	public NoticeType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(NoticeType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

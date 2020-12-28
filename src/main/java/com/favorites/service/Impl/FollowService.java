@@ -49,7 +49,7 @@ public class FollowService implements IFollowService {
         else return 0;
     }
 
-    @Override
+    /*@Override
     public List<Long> myFollow(Long baseUserId){
         return followRepository.findMyFollowIdByUserId(baseUserId);
     }
@@ -67,5 +67,5 @@ public class FollowService implements IFollowService {
     @Override
     public List<String> findUsernameBybaseUserId(Long baseUserId){
         return followRepository.findByUserId(baseUserId);
-    }
+    }*/
 }

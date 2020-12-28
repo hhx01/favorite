@@ -59,7 +59,7 @@ public class CommentController {
             noticeService.saveNotice(String.valueOf(comment.getCollectId()), "comment", user.getId(), String.valueOf(comment.getId()));
         }else{
             // 保存消息通知（直接评论）
-            Collect collect = colloectRepository.findById((long)comment.getCollectId());
+            Collect collect = collectRepository.findById((long)comment.getCollectId());
             if(null != collect){
                 noticeService.saveNotice(String.valueOf(comment.getCollectId()), "comment", collect.getUserId(), String.valueOf(comment.getId()));
             }

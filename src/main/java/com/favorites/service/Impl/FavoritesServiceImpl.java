@@ -25,7 +25,7 @@ public class FavoritesServiceImpl implements IFavoritesSevice {
         favorites1.setLastModifyTime(System.currentTimeMillis());
         favorites1.setPublicCount(0l);
         favoritesRepository.save(favorites1);
-        return "创建成功";
+        return "success";
     }
 
     @Override

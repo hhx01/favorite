@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Favorites extends Entitys implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	//收藏项目id
+	//收藏夹id
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;

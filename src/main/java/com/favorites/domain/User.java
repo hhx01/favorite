@@ -19,7 +19,7 @@ public class User extends Entitys implements Serializable {
 	private String userName;
 	//密码
 	@Column(nullable = false)
-	private String passWord;
+	private String password;
 	//email
 	@Column(nullable = false, unique = true)
 	private String email;
@@ -48,10 +48,10 @@ public class User extends Entitys implements Serializable {
 	public User() {
 		super();
 	}
-	public User(String email, String nickName, String passWord, String userName) {
+	public User(String email, String nickName, String password, String userName) {
 		super();
 		this.email = email;
-		this.passWord = passWord;
+		this.password = password;
 		this.userName = userName;
 	}
 	public Long getId() {
@@ -66,11 +66,11 @@ public class User extends Entitys implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String passWord) {
+		this.password = passWord;
 	}
 	public String getEmail() {
 		return email;

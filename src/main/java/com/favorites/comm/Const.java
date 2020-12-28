@@ -23,6 +23,8 @@ public class Const {
 
 	public static int COOKIE_TIMEOUT= 24*60*60;
 
+	public static String DEFAULT_FAVORITES = "defaultFavorites";
+
 	
 	 /* @Autowired(required = true)
 	  public void setBasePath(@Value("${favorites.base.path}")String basePath) {

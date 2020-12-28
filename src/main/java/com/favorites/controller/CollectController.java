@@ -13,6 +13,7 @@ public class CollectController {
     @Autowired
     private CollectService collectService;
 
+    //收藏
     @RequestMapping("/docollect")
     public String collect(Collect collect){
         collectService.saveCollect(collect);

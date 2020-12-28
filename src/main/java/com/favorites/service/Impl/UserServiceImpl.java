@@ -1,16 +1,10 @@
 package com.favorites.service.Impl;
 
-import com.favorites.domain.Favorites;
 import com.favorites.domain.User;
-import com.favorites.domain.result.ExceptionMsg;
-import com.favorites.domain.result.Response;
-import com.favorites.domain.result.ResponseData;
 import com.favorites.service.IUserService;
 import com.favorites.repository.IuserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport;
 import org.springframework.stereotype.Service;
-import com.favorites.utils.MD5Pwd;
 import com.favorites.comm.Const;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -39,7 +33,7 @@ public class UserServiceImpl implements IUserService {
                 if (null != userNameUser) {
                     return "用户名已存在";
                 }
-                user.setPassWord(user.getPassWord());
+                user.setPassword(user.getPassword());
                 user.setCreateTime(System.currentTimeMillis());
                 user.setLastModifyTime(System.currentTimeMillis());
                 user.setProfilePicture("img/favicon.png");
@@ -66,7 +60,7 @@ public class UserServiceImpl implements IUserService {
             if (loginUser == null ) {
                 return "用户不存在";
             }
-            else if(!loginUser.getPassWord().equals(user.getPassWord())){
+            else if(!loginUser.getPassword().equals(user.getPassword())){
                 return "密码错误";
             }
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -135,11 +129,26 @@ public class UserServiceImpl implements IUserService {
     public String resetPwd(String email, String userID, String newPwd) {
         return null;
     }
+
+    //获取user
+    @Override
+    public User findUser(long userId) {
+        return userRepository.findById(userId);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
     //查询所有user
     @Override
     public List<User> findAllUser() {
         return userRepository.findAll();
-
     }
+
+
+
 
 }

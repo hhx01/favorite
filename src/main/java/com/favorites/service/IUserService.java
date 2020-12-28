@@ -30,5 +30,9 @@ public interface IUserService {
     //忘记密码
     public String resetPwd(String email, String userID, String newPwd);
 
+    //查找user
+    public User findUser(long userId);
+    public User findUserByEmail(String email);
+
     public List<User> findAllUser();
 }

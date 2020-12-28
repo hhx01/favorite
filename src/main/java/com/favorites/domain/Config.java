@@ -1,5 +1,7 @@
 package com.favorites.domain;
 
+import com.favorites.domain.enums.CollectType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -23,7 +25,7 @@ public class Config extends Entitys implements Serializable {
 	private String defaultFavorties;
 	//默认收藏类型(private/public)
 	@Column(nullable = false)
-	private String defaultCollectType;
+	private CollectType defaultCollectType;
 	//创建时间
 	@Column(nullable = false)
 	private Long createTime;
@@ -63,11 +65,11 @@ public class Config extends Entitys implements Serializable {
 		this.defaultFavorties = defaultFavorties;
 	}
 
-	public String getDefaultCollectType() {
+	public CollectType getDefaultCollectType() {
 		return defaultCollectType;
 	}
 
-	public void setDefaultCollectType(String defaultCollectType) {
+	public void setDefaultCollectType(CollectType defaultCollectType) {
 		this.defaultCollectType = defaultCollectType;
 	}
 

@@ -26,6 +26,7 @@ import java.util.Map;
 @RequestMapping("/notice")
 public class NoticeController {
 
+
     @Autowired
     private INoticeRepository noticeRepository;
 
@@ -114,4 +115,5 @@ public class NoticeController {
         noticeRepository.updateReadedByUserId("read",baseUserId,"letter");
         return "notice/letterme";
     }
+
 }

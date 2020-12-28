@@ -21,12 +21,9 @@ public class Config extends Entitys implements Serializable {
 	//默认的收藏夹
 	@Column(nullable = false)
 	private String defaultFavorties;
-	//默认收藏类型
+	//默认收藏类型(private/public)
 	@Column(nullable = false)
 	private String defaultCollectType;
-//	//收藏时的模式
-//	@Column(nullable = false)
-//	private String defaultModel;
 	//创建时间
 	@Column(nullable = false)
 	private Long createTime;
@@ -74,14 +71,6 @@ public class Config extends Entitys implements Serializable {
 		this.defaultCollectType = defaultCollectType;
 	}
 
-//	public String getDefaultModel() {
-//		return defaultModel;
-//	}
-//
-//	public void setDefaultModel(String defaultModel) {
-//		this.defaultModel = defaultModel;
-//	}
-
 	public Long getLastModifyTime() {
 		return lastModifyTime;
 	}
@@ -105,10 +94,6 @@ public class Config extends Entitys implements Serializable {
 	public void setCollectTypeName(String collectTypeName) {
 		this.collectTypeName = collectTypeName;
 	}
-
-	//public String getModelName() {
-//		return defaultModel.equals("simple")?"简单":"专业";
-//	}
 
 	public void setModelName(String modelName) {
 		this.modelName = modelName;

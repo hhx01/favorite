@@ -33,6 +33,7 @@ public class FollowController {
         return followService.judgeFollow(userId,baseUserId);   //返回1是已关注，0是未关注
     }
 
+
 //    @RequestMapping(value = "/myfollowid")
 //    public void myfollowid(Model model,Long baseUserId){
 //        model.addAttribute("myfollowid",followService.myFollow(baseUserId));//返回我关注的所有followid
@@ -53,3 +54,4 @@ public class FollowController {
 //        model.addAttribute("myfollowusername",followService.findUsernameBybaseUserId(baseUserId));//返回我关注的所有用户名
 //    }
 }
+

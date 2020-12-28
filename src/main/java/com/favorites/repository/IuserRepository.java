@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
@@ -48,12 +47,12 @@ public interface IuserRepository extends JpaRepository<User, Long> {
     /*设置用户头像*/
     @Modifying(clearAutomatically=true)
     @Transactional
-    @Query("update User set profilePicture=:profilePicture where id=:id")
-    int setProfilePicture(@Param("profilePicture") String profilePicture, @Param("id") Long id);
+    @Query("update User set profilePicture=:profilePicture where email=:email")
+    int setProfilePicture(@Param("profilePicture") String profilePicture, @Param("email") String email);
 
     /*设置个人主页背景*/
     @Modifying(clearAutomatically=true)
     @Transactional
-    @Query("update User set backgroundPicture=:backgroundPicture where id=:id")
-    int setBackgroundPicture(@Param("backgroundPicture") String backgroundPicture, @Param("id") Long id);
+    @Query("update User set backgroundPicture=:backgroundPicture where email=:email")
+    int setBackgroundPicture(@Param("backgroundPicture") String backgroundPicture, @Param("email") String email);
 }

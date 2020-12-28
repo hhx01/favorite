@@ -19,6 +19,9 @@ public class UrlLibrary extends Entitys implements Serializable{
     //url的logo
     @Column(nullable = true,columnDefinition = "varchar(300)")
     private String logoUrl;
+    //收藏url的主题
+    @Column(nullable = false)
+    private String title;
     //
     @Column(columnDefinition="INT default 0")
     private int count;
@@ -54,5 +57,8 @@ public class UrlLibrary extends Entitys implements Serializable{
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
     }
+
+    public String getTitle(){return title;}
+    public void setTitle(String title){this.title = title;}
 
 }

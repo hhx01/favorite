@@ -1,12 +1,17 @@
 package com.favorites.service;
 
 import com.favorites.domain.Notice;
-import com.favorites.domain.enums.NoticeType;
-import com.favorites.repository.INoticeRepository;
+
+import org.springframework.data.domain.Pageable;
+
+import com.favorites.domain.view.CollectSummary;
 
 import java.util.List;
 
 public interface INoticeService {
-    public void saveNotice(String collectId, NoticeType type, Long userId);
+
+
+    public void saveNotice(String collectId,String type,Long userId,String operId);
+
 
 }

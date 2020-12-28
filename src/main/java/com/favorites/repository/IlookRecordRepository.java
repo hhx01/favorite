@@ -16,9 +16,9 @@ import javax.transaction.Transactional;
 public interface IlookRecordRepository extends JpaRepository<LookRecord, Long> {
     public String userLookRecordSql = "select c.id as id,c.title as title, c.type as type,c.url as url,c.logoUrl as logoUrl,c.userId as userId, "
             + "c.remark as remark,c.description as description,c.lastModifyTime as lastModifyTime,r.lastModifyTime as createTime, "
-            + "u.userName as userName,u.profilePicture as profilePicture,f.id as favoritesId,f.name as favoriteName "
-            + "from LookRecord r,Collect c,User u,Favorites f "
-            + "WHERE c.userId = u.id and r.collectId = c.id and c.favoritesId=f.id and c.isDelete='NO'";
+            + "u.userName as userName,u.profilePicture as profilePicture "
+            + "from LookRecord r,Collect c,User u "
+            + "WHERE c.userId = u.id and r.collectId = c.id and c.isDelete='NO'";
 
     @Query(userLookRecordSql+ " and r.userId=?1")
     Page<CollectView> findViewByUserId(Long userId, Pageable pageable);

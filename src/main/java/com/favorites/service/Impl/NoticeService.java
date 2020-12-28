@@ -53,7 +53,7 @@ public class NoticeService implements INoticeService {
 
     @Override
     public List<CollectSummary> getNoticeCollects(String type, Long userId, Pageable pageable) {
-        // TODO Auto-generated method stub
+
         Page<CollectView> views = noticeRepository.findViewByUserIdAndType(userId, type, pageable);
         return convertCollect(views, type);
     }

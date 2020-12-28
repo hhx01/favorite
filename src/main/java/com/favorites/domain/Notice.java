@@ -1,5 +1,7 @@
 package com.favorites.domain;
 
+import com.favorites.domain.enums.NoticeType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -22,8 +24,9 @@ public class Notice extends Entitys implements Serializable {
 	@Column(nullable = true)
 	private String collectId;
 	//通知类型（@，评论，赞，私信）
+	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private String type;
+	private NoticeType type;
 	//
 	@Column(nullable = true)
 	private String operId;
@@ -62,11 +65,11 @@ public class Notice extends Entitys implements Serializable {
 		this.collectId = collectId;
 	}
 
-	public String getType() {
+	public NoticeType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(NoticeType type) {
 		this.type = type;
 	}
 

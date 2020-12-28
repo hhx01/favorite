@@ -30,7 +30,7 @@ public class Favorites extends Entitys implements Serializable {
 	//最近修改时间
 	@Column(nullable = false)
 	private Long lastModifyTime;
-	//？
+	//public条目的数目
 	@Column(nullable = false)
 	private Long publicCount;
 	

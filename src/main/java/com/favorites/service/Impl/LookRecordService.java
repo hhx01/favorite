@@ -25,8 +25,8 @@ public class LookRecordService implements ILookRecordService {
     @Autowired
     private IPraiseRepository praiseRepository;
 
-    @Autowired
-    private ICommentRepository commentRepository;
+    /*@Autowired
+    private ICommentRepository commentRepository;*/
 
 
 
@@ -72,7 +72,7 @@ public class LookRecordService implements ILookRecordService {
         for (CollectView view : views) {
             CollectSummary summary=new CollectSummary(view);
             summary.setPraiseCount(praiseRepository.countByCollectId(view.getId()));
-            summary.setCommentCount(commentRepository.countByCollectId(view.getId()));
+           // summary.setCommentCount(commentRepository.countByCollectId(view.getId()));
             Praise praise=praiseRepository.findByUserIdAndCollectId(userId, view.getId());
             if(praise!=null){
                 summary.setPraise(true);

@@ -58,4 +58,7 @@ public class UrlLibrary extends Entitys implements Serializable{
         this.logoUrl = logoUrl;
     }
 
+    public String getTitle(){return title;}
+    public void setTitle(String title){this.title = title;}
+
 }

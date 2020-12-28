@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/notice")
 public class NoticeController {
 
-    @Autowired
-    private INoticeService noticeService;
-
-    @RequestMapping(value = "reply")
+//    @Autowired
+//    private INoticeService noticeService;
+//
+//    @RequestMapping(value = "reply")
 }

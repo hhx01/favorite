@@ -4,10 +4,22 @@ import com.favorites.domain.Favorites;
 import com.favorites.domain.User;
 import com.favorites.domain.result.ExceptionMsg;
 import com.favorites.domain.result.Response;
+import com.favorites.domain.result.ResponseData;
 import com.favorites.service.IUserService;
 import com.favorites.repository.IuserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport;
 import org.springframework.stereotype.Service;
+import com.favorites.utils.MD5Pwd;
+import com.favorites.comm.Const;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 
 @Service("userService")
 public class UserServiceImpl implements IUserService {
@@ -47,25 +59,69 @@ public class UserServiceImpl implements IUserService {
 
     //登录
     @Override
-    public String login(String id, String password) {
-        return null;
+    public String login(User user, HttpServletResponse response) {
+        try {
+            //这里不是bug，前端userName有可能是邮箱也有可能是昵称。
+            User loginUser = userRepository.findByUserNameOrEmail(user.getUserName(), user.getUserName());
+            if (loginUser == null ) {
+                return "用户不存在";
+            }
+            else if(!loginUser.getPassWord().equals(user.getPassWord())){
+                return "密码错误";
+            }
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            Cookie cookie = new Cookie(Const.LOGIN_SESSION_KEY, loginUser.getId().toString()+Const.PASSWORD_KEY);
+            cookie.setMaxAge(Const.COOKIE_TIMEOUT);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            request.getSession().setAttribute(Const.LOGIN_SESSION_KEY, loginUser);
+            return "登录成功";
+            /*String preUrl = "/";
+            if(null != getSession().getAttribute(Const.LAST_REFERER)){
+                preUrl = String.valueOf(getSession().getAttribute(Const.LAST_REFERER));
+                if(preUrl.indexOf("/collect?") < 0 && preUrl.indexOf("/lookAround/standard/") < 0
+                        && preUrl.indexOf("/lookAround/simple/") < 0){
+                    preUrl = "/";
+                }
+            }
+            if(preUrl.indexOf("/lookAround/standard/") >= 0){
+                preUrl = "/lookAround/standard/ALL";
+            }
+            if(preUrl.indexOf("/lookAround/simple/") >= 0){
+                preUrl = "/lookAround/simple/ALL";
+            }
+            return new ResponseData(ExceptionMsg.SUCCESS, preUrl);*/
+        } catch (Exception e) {
+            // TODO: handle exception
+            return "登录失败";
+        }
+
     }
 
     //更新个人简介
     @Override
-    public String updateIntroduction(String introduction) {
-        return null;
+    public String updateIntroduction(String introduction, String email) {
+        userRepository.setUserIntroduction(introduction,email);
+        return "修改成功";
     }
     //更新头像
     @Override
-    public String updateHead(String dataUrl) {
-        return null;
+    public String updateHead(String dataUrl, String email) {
+        userRepository.setProfilePicture(dataUrl,email);
+        return "修改成功";
     }
 
     //更新昵称
     @Override
-    public String updateNickName(String newNickName) {
-        return null;
+    public String updateNickName(String newNickName, String email) {
+        userRepository.setUserName(newNickName,email);
+        return "修改成功";
+    }
+
+    @Override
+    public String updateBgp(String dataUrl, String email) {
+        userRepository.setBackgroundPicture(dataUrl,email);
+        return "修改成功";
     }
 
     //修改密码
@@ -79,4 +135,11 @@ public class UserServiceImpl implements IUserService {
     public String resetPwd(String email, String userID, String newPwd) {
         return null;
     }
+    //查询所有user
+    @Override
+    public List<User> findAllUser() {
+        return userRepository.findAll();
+
+    }
+
 }

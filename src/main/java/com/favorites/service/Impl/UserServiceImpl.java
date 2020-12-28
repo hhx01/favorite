@@ -43,11 +43,9 @@ public class UserServiceImpl implements IUserService {
                 // 添加默认属性设置
                 //configService.saveConfig(user.getId(),String.valueOf(favorites.getId()));
             } catch (Exception e) {
-                // TODO: handle exception
-                //logger.error("create user failed, ", e);
-                return "";
+                return "fail";
             }
-            return "";
+            return "success";
         }
     }
 

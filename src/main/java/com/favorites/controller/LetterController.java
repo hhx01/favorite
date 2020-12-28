@@ -30,6 +30,7 @@ public class LetterController {
         letterService.sentLetter(letter);
     }
 
+    //获取私信列表
     @RequestMapping("/findLetterList")
     public List<LetterSummary> findLetterList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                               @RequestParam(value = "size", defaultValue = "15") Integer size,Long baseUserId){

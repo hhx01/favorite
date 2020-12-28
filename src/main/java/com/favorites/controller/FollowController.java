@@ -33,23 +33,23 @@ public class FollowController {
         return followService.judgeFollow(userId,baseUserId);   //返回1是已关注，0是未关注
     }
 
-    @RequestMapping(value = "/myfollowid")
-    public void myfollowid(Model model,Long baseUserId){
-        model.addAttribute("myfollowid",followService.myFollow(baseUserId));//返回我关注的所有followid
-    }
-
-    @RequestMapping(value = "/followme")
-    public void followme(Model model,Long baseUserId){
-        model.addAttribute("followme",followService.followMe(baseUserId));//返回关注我的用户名列表
-    }
-
-    @RequestMapping(value = "/myfollowuser")
-    public void myfollowuser(Model model,Long followId){
-        model.addAttribute("myfollowusesr",followService.findUserByfollowId(followId));//返回关注的用户详细信息
-    }
-
-    @RequestMapping(value = "/myfollowusername")
-    public void myfollowusername(Model model,Long baseUserId){
-        model.addAttribute("myfollowusername",followService.findUsernameBybaseUserId(baseUserId));//返回我关注的所有用户名
-    }
+//    @RequestMapping(value = "/myfollowid")
+//    public void myfollowid(Model model,Long baseUserId){
+//        model.addAttribute("myfollowid",followService.myFollow(baseUserId));//返回我关注的所有followid
+//    }
+//
+//    @RequestMapping(value = "/followme")
+//    public void followme(Model model,Long baseUserId){
+//        model.addAttribute("followme",followService.followMe(baseUserId));//返回关注我的用户名列表
+//    }
+//
+//    @RequestMapping(value = "/myfollowuser")
+//    public void myfollowuser(Model model,Long followId){
+//        model.addAttribute("myfollowusesr",followService.findUserByfollowId(followId));//返回关注的用户详细信息
+//    }
+//
+//    @RequestMapping(value = "/myfollowusername")
+//    public void myfollowusername(Model model,Long baseUserId){
+//        model.addAttribute("myfollowusername",followService.findUsernameBybaseUserId(baseUserId));//返回我关注的所有用户名
+//    }
 }

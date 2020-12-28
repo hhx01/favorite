@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import javax.transaction.Transactional;
 
 public interface IPraiseRepository extends JpaRepository<Praise,Long> {
+    /*
+    *
+    * */
     Long countByCollectId(Long collectId);
 
     Praise findByUserIdAndCollectId(Long userId,Long collectId);

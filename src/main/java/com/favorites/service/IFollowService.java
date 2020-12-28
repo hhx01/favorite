@@ -10,11 +10,11 @@ public interface IFollowService {
 
     public int judgeFollow(Long followedUserId , Long followUserId);
 
-    public List<Long> myFollow(Long baseUserId);
-
-    public List<String> followMe(Long baseUserId);
-
-    public List<String> findUserByfollowId(Long followId);
-
-    public List<String> findUsernameBybaseUserId(Long baseUserId);
+//    public List<Long> myFollow(Long baseUserId);
+//
+//    public List<String> followMe(Long baseUserId);
+//
+//    public List<String> findUserByfollowId(Long followId);
+//
+//    public List<String> findUsernameBybaseUserId(Long baseUserId);
 }
